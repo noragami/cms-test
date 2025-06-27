@@ -5,7 +5,7 @@ media:
 content:
   - name: guides
     label: Guides
-    path: content
+    path: ''
     type: collection
     filename: '{primary}.md'
     view:
