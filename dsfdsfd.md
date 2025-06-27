@@ -1,5 +1,6 @@
 ---
 published: true
+date: 2025-06-27
 title: dsfdsfd
 description: sddffdfs
 icon: /img/silver-and-blood/guides/media/icons/Screenshot 2025-06-27 alle
