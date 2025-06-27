@@ -1,0 +1,84 @@
+media:
+  input: media
+  output: /img/silver-and-blood/guides/media
+  extensions: [jpg, jpeg, png, gif, webp]
+content:
+  - name: guides
+    label: Guides
+    path: content
+    type: collection
+    filename: '{primary}.md'
+    view:
+      fields: [ title, author, date, published ]
+      primary: title
+    fields:
+      - name: published
+        label: Published
+        type: boolean
+        default: true
+      - name: date
+        label: Date
+        type: date
+      - name: title
+        label: Title
+        description: Description of the guide page. Keep it simple. Don't include game name.
+        type: string
+        pattern: { message: 'This field must not exceed 50 characters.', regex: '^.{1,50}$' }
+        required: true
+      - name: description
+        label: Description
+        type: string
+        pattern: { message: 'This field must not exceed 150 characters.', regex: '^.{1,150}$' }        
+        required: true
+      - name: icon
+        label: Icon
+        description: Icon used in the guide page
+        type: image
+        options:
+          path: media/icons
+        required: true
+      - name: author
+        label: Author
+        description: Author of the guide the guide page
+        type: select
+        options:
+          values: [ yato ]
+        required: true
+      - name: showHeading
+        type: boolean
+        default: true
+        hidden: true
+      - name: tags
+        label: Tags
+        description: Tags are used to be displayed in the guide section. Use sab-guide if unsure.
+        type: string
+        required: true
+        list:
+          min: 1
+          max: 5
+          collapsible: false
+        default: sab-guide
+      - name: eleventyComputed
+        type: object
+        hidden: true
+        fields:
+        - name: eleventyNavigation
+          type: object
+          hidden: true
+          fields:
+            - name: key
+              type: string
+              default: "sab-{{ title | slug }}"
+              hidden: true
+            - name: parent
+              type: string
+              default: bb-guides
+              hidden: true
+            - name: title
+              type: string
+              default: "{{ title }}"
+              hidden: true
+      - name: body
+        label: Body
+        type: rich-text
+        required: true
