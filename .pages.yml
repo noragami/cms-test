@@ -8,6 +8,7 @@ content:
     path: ''
     type: collection
     filename: '{primary}.md'
+    subfolders: false
     view:
       fields: [ title, author, date, published ]
       primary: title
