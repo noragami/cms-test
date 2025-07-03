@@ -83,3 +83,37 @@ content:
         label: Body
         type: rich-text
         required: true
+  - name: characters
+    label: Characters
+    type: collection
+    path: characters
+    format: yaml
+    filename: "{primary}.yaml"
+    subfolders: false
+    view:
+      fields: [ id, name, rarity ]
+      primary: slug
+      sort: [ id, name ]
+      default:
+        search: ''
+        sort: name
+        order: desc
+    fields:
+      - name: id
+        label: ID
+        type: string
+      - name: name
+        label: Name
+        type: string
+      - name: slug
+        label: Slug
+        type: string
+      - name: rarity
+        label: Rarity
+        type: select
+        options:
+          values: [ SSR+, SSR, SR ]
+      - name: tags
+        label: Tags
+        type: string
+        list: true
