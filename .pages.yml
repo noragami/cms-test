@@ -40,3 +40,41 @@ content:
         label: Tags
         type: string
         list: true
+  - name: teamComps
+    label: Team Comps
+    type: collection
+    path: team-comps
+    format: yaml
+    filename: "{primary}.yaml"
+    subfolders: false
+    fields:
+      - name: teamCompName
+        label: Team Comp Name
+        type: string
+        required: true
+      - name: teamMembers
+        label: Team Members
+        type: object
+        list:
+          collapsible: false
+          min: 1
+          max: 5
+        required: true
+        fields:
+          - name: charName
+            label: Char Name
+            type: reference
+            options:
+              collection: characters
+              search: "name"
+              value: "{name}"
+              label: "{name}"
+            required: true
+    view:
+      fields: [ teamCompName ]
+      primary: teamCompName
+      sort: [ teamCompName ]
+      default:
+        search: ''
+        sort: finalScore
+        order: desc
